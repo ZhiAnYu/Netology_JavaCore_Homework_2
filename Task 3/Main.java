@@ -27,7 +27,7 @@ public class Main {
             System.out.println(ex.getMessage());
         }
         System.out.println("logger on done");
-    
+
 
 //вывод игры нв консоль
         System.out.println(player1);
@@ -38,13 +38,13 @@ public class Main {
 
     static GameProgress openProgress(String absolutePathFile) {
         GameProgress gameProgress = null;
-        //откроем входной поток для чтения файла
-        try (FileInputStream fis = new FileInputStream(absolutePathFile);
+         try (FileInputStream fis = new FileInputStream(absolutePathFile);
              ObjectInputStream ois = new ObjectInputStream(fis)) {
 
             gameProgress = (GameProgress) ois.readObject();
             logger.append(LocalDateTime.now() + " " + absolutePathFile + " progress game is open\n");
             return gameProgress;
+            
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             logger.append(LocalDateTime.now() + " progress game not open\n");
